@@ -1,6 +1,6 @@
 Can’t wait for apps to be updated to support the dark theme of Yosemite?
 
-![White Menu Icons](https://pbs.twimg.com/media/Bwop3R2IUAALUa1.png:large)
+![White Menu Icons](http://methylblue.com/junk/yosinvert.png)
 
 Run this script:
 
