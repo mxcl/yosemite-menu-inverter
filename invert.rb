@@ -13,3 +13,11 @@ if File.directory? "/Applications/Dropbox.app"
 end
 
 system %{killall Dropbox && open /Applications/Dropbox.app}
+
+
+# 1Password
+
+# App Store version requires sudo, please submit code to detect if sudo is
+# needed
+## img = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources/menubar-icon.tiff"
+## system "sudo convert -negate #{img} #{img}"
