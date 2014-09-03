@@ -1,5 +1,7 @@
 Can’t wait for apps to be updated to support the dark theme of Yosemite?
 
+![White Menu Icons](https://pbs.twimg.com/media/Bwop3R2IUAALUa1.png:large)
+
 Run this script:
 
     curl https://raw.githubusercontent.com/mxcl/yosemite-menu-inverter/master/invert.rb | ruby
