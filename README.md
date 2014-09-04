@@ -12,4 +12,4 @@ Here’s a Twitter friendly URL:
 
 Currently supports Dropbox. Submit your own additions!
 
-I added 1Password in the README commented out as it needs work.
+I added 1Password in the script (commented out as it needs work).
