@@ -31,53 +31,61 @@ end
 relaunch "Dropbox"
 
 # Window Magnet
-base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
-origin_dark = base_path + "StatusIcon.tiff"
-origin_light = base_path + "StatusIconClicked.tiff"
-tmp = base_path << "StatusIcon.tmp"
+if File.directory? "/Applications/Window Magnet.app"
+  base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
+  origin_dark = base_path + "StatusIcon.tiff"
+  origin_light = base_path + "StatusIconClicked.tiff"
+  tmp = base_path << "StatusIcon.tmp"
 
-sudo "mv #{origin_dark} #{tmp}"
-sudo "mv #{origin_light} #{origin_dark}"
-sudo "mv #{tmp} #{origin_light}"
-relaunch "Window\\ Magnet"
+  sudo "mv #{origin_dark} #{tmp}"
+  sudo "mv #{origin_light} #{origin_dark}"
+  sudo "mv #{tmp} #{origin_light}"
+  relaunch "Window\\ Magnet"
+end
 
 # BitTorrent Sync
-`ls /Applications/BitTorrent\\ Sync.app/Contents/Resources/trayIcon_*`.split("\n").each do |filename|
-  `convert -negate "#{filename}" "#{filename}"`
+if File.directory? "/Applications/BitTorrent Sync.app"
+  `ls /Applications/BitTorrent\\ Sync.app/Contents/Resources/trayIcon_*`.split("\n").each do |filename|
+    `convert -negate "#{filename}" "#{filename}"`
+  end
+  relaunch "BitTorrent\\ Sync"
 end
-relaunch "BitTorrent\\ Sync"
 
 # Degrees
-base_path = "/Applications/Degrees.app/Contents/Resources/"
-%w{cloud_highlighted cloud_moon_highlighted cloud_moon cloud_sun_highlighted
-  cloud_sun cloud clouds_highlighted clouds fog_highlighted
-  moon_cloud_highlighted moon_cloud moon_highlighted moon rain_highlighted
-  rain showers_highlighted showers snowflake_highlighted snowflake
-  sun_highlighted sun thunder_highlighted thunder}.each do |filename|
-  non_retina = base_path + filename + ".png"
-  retina = base_path + filename + "@2x.png"
-  sudo %{convert -negate "#{non_retina}" "#{non_retina}"}
-  sudo %{convert -negate "#{retina}" "#{retina}"}
+if File.directory? "/Applications/Degrees.app"
+  base_path = "/Applications/Degrees.app/Contents/Resources/"
+  %w{cloud_highlighted cloud_moon_highlighted cloud_moon cloud_sun_highlighted
+    cloud_sun cloud clouds_highlighted clouds fog_highlighted
+    moon_cloud_highlighted moon_cloud moon_highlighted moon rain_highlighted
+    rain showers_highlighted showers snowflake_highlighted snowflake
+    sun_highlighted sun thunder_highlighted thunder}.each do |filename|
+    non_retina = base_path + filename + ".png"
+    retina = base_path + filename + "@2x.png"
+    sudo %{convert -negate "#{non_retina}" "#{non_retina}"}
+    sudo %{convert -negate "#{retina}" "#{retina}"}
+  end
+  relaunch "Degrees"
 end
-relaunch "Degrees"
 
 # Radium
-base_path = "/Applications/Radium.app/Contents/Resources/"
-%w{menubar_icon_busy_1 menubar_icon_busy_2 menubar_icon_busy_3
-  menubar_icon_busy_4 menubar_icon_busy_5 menubar_icon_busy_6
-  menubar_icon_disabled menubar_icon_pressed menubar_icon_regular
-  menubar_icon_success}.each do |filename|
-  full_filename = base_path + filename + ".tiff"
-  `convert -negate "#{full_filename}" "#{full_filename}"`
+if File.directory? "/Applications/Radium.app"
+  base_path = "/Applications/Radium.app/Contents/Resources/"
+  %w{menubar_icon_busy_1 menubar_icon_busy_2 menubar_icon_busy_3
+    menubar_icon_busy_4 menubar_icon_busy_5 menubar_icon_busy_6
+    menubar_icon_disabled menubar_icon_pressed menubar_icon_regular
+    menubar_icon_success}.each do |filename|
+    full_filename = base_path + filename + ".tiff"
+    `convert -negate "#{full_filename}" "#{full_filename}"`
+  end
+  relaunch "Radium"
 end
-relaunch "Radium"
+
 
 # 1Password
-
-# App Store version requires sudo, please submit code to detect if sudo is
-# needed
-## root = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources"
-## img = "#{root}/menubar-icon.tiff"
-## inv = "#{root}/menubar-selected-graphite.tiff"
-## TODO copy graphite one over the default one as it looks correct
-## system "sudo convert -negate #{img} #{img}"
+if File.directory? "/Applications/1Password.app"
+  ## root = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources"
+  ## img = "#{root}/menubar-icon.tiff"
+  ## inv = "#{root}/menubar-selected-graphite.tiff"
+  ## TODO copy graphite one over the default one as it looks correct
+  ## system "sudo convert -negate #{img} #{img}"
+end
