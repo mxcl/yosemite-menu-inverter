@@ -1,3 +1,16 @@
+def sudo_needed?(filename)
+  `ls -l #{filename} | awk '{ print $3 }'`.strip == "root"
+end
+
+def sudo(command)
+  system "sudo #{command}"
+end
+
+def relaunch(app)
+  system %{killall #{app} && open /Applications/#{app}.app}
+end
+
+# Dropbox
 if File.directory? "/Applications/Dropbox.app"
   %w{busy-lep busy2-lep busy3-lep busy4-lep
      idle-lep
@@ -15,9 +28,49 @@ if File.directory? "/Applications/Dropbox.app"
     system "convert -negate #{inv} #{inv}"
   end
 end
+relaunch "Dropbox"
 
-system %{killall Dropbox && open /Applications/Dropbox.app}
+# Window Magnet
+base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
+origin_dark = base_path + "StatusIcon.tiff"
+origin_light = base_path + "StatusIconClicked.tiff"
+tmp = base_path << "StatusIcon.tmp"
 
+sudo "mv #{origin_dark} #{tmp}"
+sudo "mv #{origin_light} #{origin_dark}"
+sudo "mv #{tmp} #{origin_light}"
+relaunch "Window\\ Magnet"
+
+# BitTorrent Sync
+`ls /Applications/BitTorrent\\ Sync.app/Contents/Resources/trayIcon_*`.split("\n").each do |filename|
+  `convert -negate "#{filename}" "#{filename}"`
+end
+relaunch "BitTorrent\\ Sync"
+
+# Degrees
+base_path = "/Applications/Degrees.app/Contents/Resources/"
+%w{cloud_highlighted cloud_moon_highlighted cloud_moon cloud_sun_highlighted
+  cloud_sun cloud clouds_highlighted clouds fog_highlighted
+  moon_cloud_highlighted moon_cloud moon_highlighted moon rain_highlighted
+  rain showers_highlighted showers snowflake_highlighted snowflake
+  sun_highlighted sun thunder_highlighted thunder}.each do |filename|
+  non_retina = base_path + filename + ".png"
+  retina = base_path + filename + "@2x.png"
+  sudo %{convert -negate "#{non_retina}" "#{non_retina}"}
+  sudo %{convert -negate "#{retina}" "#{retina}"}
+end
+relaunch "Degrees"
+
+# Radium
+base_path = "/Applications/Radium.app/Contents/Resources/"
+%w{menubar_icon_busy_1 menubar_icon_busy_2 menubar_icon_busy_3
+  menubar_icon_busy_4 menubar_icon_busy_5 menubar_icon_busy_6
+  menubar_icon_disabled menubar_icon_pressed menubar_icon_regular
+  menubar_icon_success}.each do |filename|
+  full_filename = base_path + filename + ".tiff"
+  `convert -negate "#{full_filename}" "#{full_filename}"`
+end
+relaunch "Radium"
 
 # 1Password
 
