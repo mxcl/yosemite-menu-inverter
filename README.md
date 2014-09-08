@@ -10,6 +10,12 @@ Here’s a Twitter friendly URL:
 
     curl -L http://bit.ly/yosinvert  | ruby
 
-Currently supports Dropbox. Submit your own additions!
+Currently supports:
 
-I added 1Password in the script (commented out as it needs work).
+* Dropbox
+* Window Magnet
+* Radium
+* Degrees
+* BitTorrent Sync
+
+There is commented out code for 1Password in the script. Run it manually, or submit the proper fixes (it works, just requires some human thinking that could easily be made into code).
