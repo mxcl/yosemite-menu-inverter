@@ -7,7 +7,7 @@ def sudo(command)
 end
 
 def relaunch(app)
-  system %{killall #{app} && open /Applications/#{app}.app}
+  system %{killall "#{app}" && open "/Applications/#{app}.app"}
 end
 
 # Dropbox
