@@ -10,6 +10,20 @@ def relaunch(app)
   system %{killall #{app} && open /Applications/#{app}.app}
 end
 
+# Pomodoro Timer
+if File.directory? "/Applications/Pomodoro Timer.app"
+  %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|
+    prefix = "/Applications/Pomodoro Timer.app/Contents/Resources/"
+    img = "#{prefix}#{suffix}.png"
+    sudo %{convert -negate "#{img}" "#{img}"}
+
+    if not $?.success?
+      abort "    try: brew install imagemagick --with-libtiff"
+    end
+  end
+  relaunch "Pomodoro Timer"
+end
+
 # Dropbox
 if File.directory? "/Applications/Dropbox.app"
   %w{busy-lep busy2-lep busy3-lep busy4-lep
