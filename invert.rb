@@ -41,8 +41,8 @@ if File.directory? "/Applications/Dropbox.app"
     inv = "#{prefix}-#{suffix}-inv.tiff"
     system "convert -negate #{inv} #{inv}"
   end
+  relaunch "Dropbox"
 end
-relaunch "Dropbox"
 
 # Window Magnet
 if File.directory? "/Applications/Window Magnet.app"
