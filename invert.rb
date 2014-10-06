@@ -17,11 +17,22 @@ if File.directory? "/Applications/Crashlytics.app"
     img = "#{prefix}#{suffix}.tiff"
     system "convert -negate #{img} #{img}"
 
+    relaunch "Crashlytics"
+end
+
+# Testflight
+if File.directory? "/Applications/TestFlight.app"
+  %w{tf-menubar-icon}.each do |suffix|
+    prefix = "/Applications/TestFlight.app/Contents/MacOS/TestFlightHelper.app/Contents/Resources/"
+    img = "#{prefix}#{suffix}.png"
+    sudo %{convert -negate "#{img}" "#{img}"}
+
     if not $?.success?
       abort "    try: brew install imagemagick --with-libtiff"
     end
   end
-  relaunch "Crashlytics"
+
+  system %{killall TestFlightHelper && open /Applications/TestFlight.app}
 end
 
 # Pomodoro Timer
