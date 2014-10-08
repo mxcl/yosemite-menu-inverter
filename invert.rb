@@ -28,9 +28,7 @@ if File.directory? "/Applications/TestFlight.app"
     img = "#{prefix}#{suffix}.png"
     sudo %{convert -negate "#{img}" "#{img}"}
 
-    if not $?.success?
-      abort "    try: brew install imagemagick --with-libtiff"
-    end
+    abort "    try: brew install imagemagick --with-libtiff" if not $?.success?
   end
 
   system %{killall TestFlightHelper && open /Applications/TestFlight.app}
@@ -100,7 +98,7 @@ end
 # BitTorrent Sync
 if File.directory? "/Applications/BitTorrent Sync.app"
   `ls /Applications/BitTorrent\\ Sync.app/Contents/Resources/trayIcon_*`.split("\n").each do |filename|
-    `convert -negate "#{filename}" "#{filename}"`
+    system %{convert -negate "#{filename}" "#{filename}"}
   end
   relaunch "BitTorrent\\ Sync"
 end
@@ -129,7 +127,7 @@ if File.directory? "/Applications/Radium.app"
     menubar_icon_disabled menubar_icon_pressed menubar_icon_regular
     menubar_icon_success}.each do |filename|
     full_filename = base_path + filename + ".tiff"
-    `convert -negate "#{full_filename}" "#{full_filename}"`
+    system *%W{convert -negate #{full_filename} #{full_filename}}
   end
   relaunch "Radium"
 end
