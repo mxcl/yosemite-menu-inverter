@@ -16,8 +16,9 @@ if File.directory? "/Applications/Crashlytics.app"
     prefix = "/Applications/Crashlytics.app/Contents/Resources/"
     img = "#{prefix}#{suffix}.tiff"
     system "convert -negate #{img} #{img}"
+  end
 
-    relaunch "Crashlytics"
+  relaunch "Crashlytics"
 end
 
 # Testflight
