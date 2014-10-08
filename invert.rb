@@ -134,12 +134,11 @@ if File.directory? "/Applications/Radium.app"
   relaunch "Radium"
 end
 
-
 # 1Password
 if File.directory? "/Applications/1Password.app"
-  ## root = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources"
-  ## img = "#{root}/menubar-icon.tiff"
+  root = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources"
+  img = "#{root}/menubar-icon.tiff"
   ## inv = "#{root}/menubar-selected-graphite.tiff"
-  ## TODO copy graphite one over the default one as it looks correct
-  ## system "sudo convert -negate #{img} #{img}"
+  system *%W{sudo convert -negate #{img} #{img}}
+  system "killall", "2BUA8C4S2C.com.agilebits.onepassword-osx-helper"
 end
