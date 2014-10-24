@@ -140,3 +140,11 @@ if File.directory? "/Applications/1Password.app"
   system *%W{sudo convert -negate #{img} #{img}}
   system "killall", "2BUA8C4S2C.com.agilebits.onepassword-osx-helper"
 end
+
+# Google Drive
+if File.directory? "/Applications/Google Drive.app"
+  Dir["/Applications/Google Drive.app/Contents/Resources/mac-*.png"].each do |img|
+    system %{convert -negate "#{img}" "#{img}"}
+  end
+  relaunch "Google Drive"
+end
