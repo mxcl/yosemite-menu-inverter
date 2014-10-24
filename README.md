@@ -22,3 +22,4 @@ Currently supports:
 * Pomodoro Timer
 * CrashPlan
 * 1Password
+* Google Drive
