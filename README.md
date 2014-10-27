@@ -24,3 +24,4 @@ Currently supports:
 * 1Password
 * Google Drive
 * F.lux
+* GrabBox
