@@ -131,3 +131,17 @@ if File.directory? "/Applications/Google Drive.app"
   end
   relaunch "Google Drive"
 end
+
+# F.lux
+if File.directory? "/Applications/Flux.app"
+  %w{flux-icon-mono4 geoloc-arrow}.each do |suffix|
+    prefix = "/Applications/Flux.app/Contents/Resources/"
+    img = "#{prefix}#{suffix}.tiff"
+    system "convert -negate #{img} #{img}"
+
+    if not $?.success?
+      abort "    try: brew install imagemagick --with-libtiff"
+    end
+  end
+  relaunch "Flux"
+end

@@ -23,3 +23,4 @@ Currently supports:
 * CrashPlan
 * 1Password
 * Google Drive
+* F.lux
