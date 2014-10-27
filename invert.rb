@@ -63,24 +63,7 @@ if File.directory? "/Applications/CrashPlan.app/Contents/Resources/CrashPlan men
 end
 
 # Dropbox
-if File.directory? "/Applications/Dropbox.app"
-  %w{busy-lep busy2-lep busy3-lep busy4-lep
-     idle-lep
-     pause-lep x-lep
-     logo-lep}.each do |suffix|
-    prefix = "/Applications/Dropbox.app/Contents/Resources/dropboxstatus"
-    img = "#{prefix}-#{suffix}.tiff"
-    system "convert -negate #{img} #{img}"
-
-    if not $?.success?
-      abort "    try: brew install imagemagick --with-libtiff"
-    end
-
-    inv = "#{prefix}-#{suffix}-inv.tiff"
-    system "convert -negate #{inv} #{inv}"
-  end
-  relaunch "Dropbox"
-end
+# Dropbox updated their app, update your dropbox!
 
 # Window Magnet
 if File.directory? "/Applications/Window Magnet.app"
