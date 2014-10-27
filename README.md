@@ -12,16 +12,16 @@ Here’s a Twitter friendly URL:
 
 Currently supports:
 
-* Dropbox
-* Window Magnet
-* Radium
-* Degrees
+* 1Password
 * BitTorrent Sync
 * Crashlytics
-* TestFlight
-* Pomodoro Timer
 * CrashPlan
-* 1Password
-* Google Drive
+* Degrees
+* Dropbox (no need anymore, just update your app)
 * F.lux
 * GrabBox
+* Google Drive
+* Pomodoro Timer
+* Radium
+* TestFlight
+* Window Magnet
