@@ -1,3 +1,6 @@
+##
+# Helpers
+##
 def sudo_needed?(filename)
   `ls -l #{filename} | awk '{ print $3 }'`.strip == "root"
 end
@@ -10,6 +13,27 @@ def relaunch(app)
   system %{killall "#{app}" && open "/Applications/#{app}.app"}
 end
 
+##
+# Apps icon overwrite
+##
+
+# 1Password
+if File.directory? "/Applications/1Password.app"
+  root = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources"
+  img = "#{root}/menubar-icon.tiff"
+  ## inv = "#{root}/menubar-selected-graphite.tiff"
+  system *%W{sudo convert -negate #{img} #{img}}
+  system "killall", "2BUA8C4S2C.com.agilebits.onepassword-osx-helper"
+end
+
+# BitTorrent Sync
+if File.directory? "/Applications/BitTorrent Sync.app"
+  `ls /Applications/BitTorrent\\ Sync.app/Contents/Resources/trayIcon_*`.split("\n").each do |filename|
+    system %{convert -negate "#{filename}" "#{filename}"}
+  end
+  relaunch "BitTorrent\\ Sync"
+end
+
 # Crashlytics
 if File.directory? "/Applications/Crashlytics.app"
   %w{image.status-item}.each do |suffix|
@@ -19,33 +43,6 @@ if File.directory? "/Applications/Crashlytics.app"
   end
 
   relaunch "Crashlytics"
-end
-
-# Testflight
-if File.directory? "/Applications/TestFlight.app"
-  %w{tf-menubar-icon}.each do |suffix|
-    prefix = "/Applications/TestFlight.app/Contents/MacOS/TestFlightHelper.app/Contents/Resources/"
-    img = "#{prefix}#{suffix}.png"
-    sudo %{convert -negate "#{img}" "#{img}"}
-
-    abort "    try: brew install imagemagick --with-libtiff" if not $?.success?
-  end
-
-  system %{killall TestFlightHelper && open /Applications/TestFlight.app}
-end
-
-# Pomodoro Timer
-if File.directory? "/Applications/Pomodoro Timer.app"
-  %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|
-    prefix = "/Applications/Pomodoro Timer.app/Contents/Resources/"
-    img = "#{prefix}#{suffix}.png"
-    sudo %{convert -negate "#{img}" "#{img}"}
-
-    if not $?.success?
-      abort "    try: brew install imagemagick --with-libtiff"
-    end
-  end
-  relaunch "Pomodoro Timer"
 end
 
 # CrashPlan
@@ -62,30 +59,6 @@ if File.directory? "/Applications/CrashPlan.app/Contents/Resources/CrashPlan men
   system %{killall "CrashPlan menu bar" && open "/Applications/CrashPlan.app/Contents/Resources/CrashPlan menu bar.app"}
 end
 
-# Dropbox
-# Dropbox updated their app, update your dropbox!
-
-# Window Magnet
-if File.directory? "/Applications/Window Magnet.app"
-  base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
-  origin_dark = base_path + "StatusIcon.tiff"
-  origin_light = base_path + "StatusIconClicked.tiff"
-  tmp = base_path << "StatusIcon.tmp"
-
-  sudo "mv #{origin_dark} #{tmp}"
-  sudo "mv #{origin_light} #{origin_dark}"
-  sudo "mv #{tmp} #{origin_light}"
-  relaunch "Window\\ Magnet"
-end
-
-# BitTorrent Sync
-if File.directory? "/Applications/BitTorrent Sync.app"
-  `ls /Applications/BitTorrent\\ Sync.app/Contents/Resources/trayIcon_*`.split("\n").each do |filename|
-    system %{convert -negate "#{filename}" "#{filename}"}
-  end
-  relaunch "BitTorrent\\ Sync"
-end
-
 # Degrees
 if File.directory? "/Applications/Degrees.app"
   base_path = "/Applications/Degrees.app/Contents/Resources/"
@@ -100,36 +73,6 @@ if File.directory? "/Applications/Degrees.app"
     sudo %{convert -negate "#{retina}" "#{retina}"}
   end
   relaunch "Degrees"
-end
-
-# Radium
-if File.directory? "/Applications/Radium.app"
-  base_path = "/Applications/Radium.app/Contents/Resources/"
-  %w{menubar_icon_busy_1 menubar_icon_busy_2 menubar_icon_busy_3
-    menubar_icon_busy_4 menubar_icon_busy_5 menubar_icon_busy_6
-    menubar_icon_disabled menubar_icon_pressed menubar_icon_regular
-    menubar_icon_success}.each do |filename|
-    full_filename = base_path + filename + ".tiff"
-    system *%W{convert -negate #{full_filename} #{full_filename}}
-  end
-  relaunch "Radium"
-end
-
-# 1Password
-if File.directory? "/Applications/1Password.app"
-  root = "/Applications/1Password.app/Contents/Library/LoginItems/2BUA8C4S2C.com.agilebits.onepassword-osx-helper.app/Contents/Resources"
-  img = "#{root}/menubar-icon.tiff"
-  ## inv = "#{root}/menubar-selected-graphite.tiff"
-  system *%W{sudo convert -negate #{img} #{img}}
-  system "killall", "2BUA8C4S2C.com.agilebits.onepassword-osx-helper"
-end
-
-# Google Drive
-if File.directory? "/Applications/Google Drive.app"
-  Dir["/Applications/Google Drive.app/Contents/Resources/mac-*.png"].each do |img|
-    system %{convert -negate "#{img}" "#{img}"}
-  end
-  relaunch "Google Drive"
 end
 
 # F.lux
@@ -158,4 +101,65 @@ if File.directory? "/Applications/GrabBox.app"
     end
   end
   relaunch "GrabBox"
+end
+
+# Google Drive
+if File.directory? "/Applications/Google Drive.app"
+  Dir["/Applications/Google Drive.app/Contents/Resources/mac-*.png"].each do |img|
+    system %{convert -negate "#{img}" "#{img}"}
+  end
+  relaunch "Google Drive"
+end
+
+# Pomodoro Timer
+if File.directory? "/Applications/Pomodoro Timer.app"
+  %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|
+    prefix = "/Applications/Pomodoro Timer.app/Contents/Resources/"
+    img = "#{prefix}#{suffix}.png"
+    sudo %{convert -negate "#{img}" "#{img}"}
+
+    if not $?.success?
+      abort "    try: brew install imagemagick --with-libtiff"
+    end
+  end
+  relaunch "Pomodoro Timer"
+end
+
+# Radium
+if File.directory? "/Applications/Radium.app"
+  base_path = "/Applications/Radium.app/Contents/Resources/"
+  %w{menubar_icon_busy_1 menubar_icon_busy_2 menubar_icon_busy_3
+    menubar_icon_busy_4 menubar_icon_busy_5 menubar_icon_busy_6
+    menubar_icon_disabled menubar_icon_pressed menubar_icon_regular
+    menubar_icon_success}.each do |filename|
+    full_filename = base_path + filename + ".tiff"
+    system *%W{convert -negate #{full_filename} #{full_filename}}
+  end
+  relaunch "Radium"
+end
+
+# Testflight
+if File.directory? "/Applications/TestFlight.app"
+  %w{tf-menubar-icon}.each do |suffix|
+    prefix = "/Applications/TestFlight.app/Contents/MacOS/TestFlightHelper.app/Contents/Resources/"
+    img = "#{prefix}#{suffix}.png"
+    sudo %{convert -negate "#{img}" "#{img}"}
+
+    abort "    try: brew install imagemagick --with-libtiff" if not $?.success?
+  end
+
+  system %{killall TestFlightHelper && open /Applications/TestFlight.app}
+end
+
+# Window Magnet
+if File.directory? "/Applications/Window Magnet.app"
+  base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
+  origin_dark = base_path + "StatusIcon.tiff"
+  origin_light = base_path + "StatusIconClicked.tiff"
+  tmp = base_path << "StatusIcon.tmp"
+
+  sudo "mv #{origin_dark} #{tmp}"
+  sudo "mv #{origin_light} #{origin_dark}"
+  sudo "mv #{tmp} #{origin_light}"
+  relaunch "Window\\ Magnet"
 end
