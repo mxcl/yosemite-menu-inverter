@@ -92,7 +92,7 @@ end
 # GrabBox
 if File.directory? "/Applications/GrabBox.app"
   %w{menuicon-animation-1 menuicon-animation-2 menuicon-animation-3 menuicon-animation-4 menuicon-animation-5 menuicon-animation-6 menuicon-animation-7 menuicon-animation-8 menuicon}.each do |suffix|
-    prefix = "$HOME/Applications/GrabBox.app/Contents/Resources/"
+    prefix = "/Applications/GrabBox.app/Contents/Resources/"
     img = "#{prefix}#{suffix}.tiff"
     system "convert -negate #{img} #{img}"
 
