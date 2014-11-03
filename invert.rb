@@ -151,6 +151,19 @@ if File.directory? "/Applications/TestFlight.app"
   system %{killall TestFlightHelper && open /Applications/TestFlight.app}
 end
 
+# Tomighty
+if File.directory? "/Applications/Tomighty.app"
+  %w{tf-menubar-icon}.each do |suffix|
+    prefix = "/Applications/Tomighty.app/Contents/Resources"
+    img = "#{prefix}/status-normal.tiff"
+    sudo %{convert -negate "#{img}" "#{img}"}
+
+    abort "    try: brew install imagemagick --with-libtiff" if not $?.success?
+  end
+
+  system %{killall Tomighty && open /Applications/Tomighty.app}
+end
+
 # Window Magnet
 if File.directory? "/Applications/Window Magnet.app"
   base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
