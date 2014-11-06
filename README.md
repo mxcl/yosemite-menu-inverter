@@ -20,7 +20,7 @@ Here’s a Twitter friendly URL:
 * CrashPlan
 * Degrees
 * Dropbox (no need anymore, just update your app)
-* F.lux
+* F.lux (no need anymore, just update your app)
 * GrabBox
 * Google Drive
 * Pomodoro Timer
