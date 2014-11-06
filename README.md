@@ -14,13 +14,10 @@ Here’s a Twitter friendly URL:
 
 ### Currently supports:
 
-* 1Password
 * BitTorrent Sync
 * Crashlytics
 * CrashPlan
 * Degrees
-* Dropbox (no need anymore, just update your app)
-* F.lux (no need anymore, just update your app)
 * GrabBox
 * Google Drive
 * Pomodoro Timer
