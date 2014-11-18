@@ -164,8 +164,8 @@ if File.directory? "/Applications/Window Magnet.app"
 end
 
 # Google Hangouts
-if File.directory? "/Applications/Google Chrome.app"
-  base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
+base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
+if File.directory? base_hangouts_dir
   current_hangouts_version = `ls #{base_hangouts_dir} | tail -1`.strip
 
   prefix = "#{base_hangouts_dir}#{current_hangouts_version}/images_4/presence/"
