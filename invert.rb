@@ -162,3 +162,16 @@ if File.directory? "/Applications/Window Magnet.app"
   sudo "mv #{tmp} #{origin_light}"
   relaunch "Window\\ Magnet"
 end
+
+# Google Hangouts
+if File.directory? "/Applications/Google Chrome.app"
+  base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
+  current_hangouts_version = `ls #{base_hangouts_dir} | tail -1`.strip
+
+  prefix = "#{base_hangouts_dir}#{current_hangouts_version}/images_4/presence/"
+  `ls #{prefix} | grep "mac"`.split("\n").each do |filename|
+    img = "#{prefix}#{filename}"
+    system %{convert -negate #{img} #{img}}
+  end
+  relaunch "Google\ Chrome"
+end

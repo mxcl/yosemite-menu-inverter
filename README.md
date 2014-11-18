@@ -1,3 +1,5 @@
+## Forked from mxcl/yosemite-menu-inverter
+
 Can’t wait for apps to be updated to support the dark theme of Yosemite?
 
 ![White Menu Icons](http://methylblue.com/junk/yosinvert.png)
@@ -6,11 +8,7 @@ Can’t wait for apps to be updated to support the dark theme of Yosemite?
 
 Run this script:
 
-    curl https://raw.githubusercontent.com/mxcl/yosemite-menu-inverter/master/invert.rb | ruby
-
-Here’s a Twitter friendly URL:
-
-    curl -L http://bit.ly/yosinvert  | ruby
+    curl https://raw.githubusercontent.com/parrotmac/yosemite-menu-inverter/master/invert.rb | ruby
 
 ### Currently supports:
 
@@ -24,6 +22,7 @@ Here’s a Twitter friendly URL:
 * Radium
 * TestFlight
 * Window Magnet
+* Google Hangouts Extension
 
 ## FAQ
 
