@@ -1,5 +1,3 @@
-## Forked from mxcl/yosemite-menu-inverter
-
 Can’t wait for apps to be updated to support the dark theme of Yosemite?
 
 ![White Menu Icons](http://methylblue.com/junk/yosinvert.png)
@@ -22,11 +20,11 @@ Here’s a Twitter friendly URL:
 * Degrees
 * GrabBox
 * Google Drive
+* Google Hangouts Extension
 * Pomodoro Timer
 * Radium
 * TestFlight
 * Window Magnet
-* Google Hangouts Extension
 
 ## FAQ
 

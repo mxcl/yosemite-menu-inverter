@@ -97,6 +97,19 @@ if File.directory? "/Applications/Google Drive.app"
   relaunch "Google Drive"
 end
 
+# Google Hangouts
+base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
+if File.directory? base_hangouts_dir
+  current_hangouts_version = `ls #{base_hangouts_dir} | tail -1`.strip
+
+  prefix = "#{base_hangouts_dir}#{current_hangouts_version}/images_4/presence/"
+  `ls #{prefix} | grep "mac"`.split("\n").each do |filename|
+    img = "#{prefix}#{filename}"
+    system %{convert -negate #{img} #{img}}
+  end
+  relaunch "Google\ Chrome"
+end
+
 # Pomodoro Timer
 if File.directory? "/Applications/Pomodoro Timer.app"
   %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|
@@ -161,17 +174,4 @@ if File.directory? "/Applications/Window Magnet.app"
   sudo "mv #{origin_light} #{origin_dark}"
   sudo "mv #{tmp} #{origin_light}"
   relaunch "Window\\ Magnet"
-end
-
-# Google Hangouts
-base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
-if File.directory? base_hangouts_dir
-  current_hangouts_version = `ls #{base_hangouts_dir} | tail -1`.strip
-
-  prefix = "#{base_hangouts_dir}#{current_hangouts_version}/images_4/presence/"
-  `ls #{prefix} | grep "mac"`.split("\n").each do |filename|
-    img = "#{prefix}#{filename}"
-    system %{convert -negate #{img} #{img}}
-  end
-  relaunch "Google\ Chrome"
 end
