@@ -20,6 +20,7 @@ Here’s a Twitter friendly URL:
 * Degrees
 * GrabBox
 * Google Drive
+* Google Hangouts Extension
 * Pomodoro Timer
 * Radium
 * TestFlight
