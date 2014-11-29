@@ -14,17 +14,19 @@ Here’s a Twitter friendly URL:
 
 ### Currently supports:
 
-* BitTorrent Sync
-* Crashlytics
-* CrashPlan
-* Degrees
-* GrabBox
-* Google Drive
-* Google Hangouts Extension
-* Pomodoro Timer
-* Radium
-* TestFlight
-* Window Magnet
+* [BitTorrent Sync](http://www.getsync.com/)
+* [Caffeine](http://lightheadsw.com/caffeine/)
+* [Crashlytics](https://try.crashlytics.com/)
+* [CrashPlan](http://www.code42.com/crashplan/)
+* [Degrees](https://itunes.apple.com/us/app/degrees/id430173763?mt=12)
+* [GrabBox](http://grabbox.devsoft.no/)
+* [Google Drive](http://drive.google.com)
+* [Google Hangouts Extension](https://chrome.google.com/webstore/detail/hangouts/nckgahadagoaajjgafhacjanaoiihapd?hl=en)
+* [Hazel](http://www.noodlesoft.com/hazel.php)
+* [Radium](http://catpigstudios.com/)
+* [TestFlight](https://www.testflightapp.com/)
+* [TVShows App](http://tvshowsapp.com/)
+* [Window Magnet](http://magnet.crowdcafe.com/)
 
 ## FAQ
 

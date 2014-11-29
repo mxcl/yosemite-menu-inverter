@@ -13,6 +13,9 @@ def relaunch(app)
   system %{killall "#{app}" && open "/Applications/#{app}.app"}
 end
 
+#For apps in system preferences panels
+user_root = File.expand_path('~')
+
 ##
 # Apps icon overwrite
 ##
@@ -32,6 +35,14 @@ if File.directory? "/Applications/BitTorrent Sync.app"
     system %{convert -negate "#{filename}" "#{filename}"}
   end
   relaunch "BitTorrent\\ Sync"
+end
+
+# Caffeine
+if File.directory? "/Applications/Caffeine.app"
+  Dir["/Applications/Caffeine.app/Contents/Resources/*.png"].each do |img|
+    sudo %{convert -negate "#{img}" "#{img}"}
+  end
+  relaunch "Caffeine"
 end
 
 # Crashlytics
@@ -110,18 +121,12 @@ if File.directory? base_hangouts_dir
   relaunch "Google\ Chrome"
 end
 
-# Pomodoro Timer
-if File.directory? "/Applications/Pomodoro Timer.app"
-  %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|
-    prefix = "/Applications/Pomodoro Timer.app/Contents/Resources/"
-    img = "#{prefix}#{suffix}.png"
+# Hazel
+if File.directory? "#{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app"
+  Dir["#{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app/Contents/Resources/HazelStatusAlt.tiff"].each do |img|
     sudo %{convert -negate "#{img}" "#{img}"}
-
-    if not $?.success?
-      abort "    try: brew install imagemagick --with-libtiff"
-    end
   end
-  relaunch "Pomodoro Timer"
+  system %{killall HazelHelper && open #{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app}
 end
 
 # Radium
@@ -161,6 +166,14 @@ if File.directory? "/Applications/Tomighty.app"
   end
 
   system %{killall Tomighty && open /Applications/Tomighty.app}
+end
+
+# TV Shows App
+if File.directory? "#{user_root}/Library/PreferencePanes/TVShows.prefPane/Contents/Resources/TVShowsHelper.app"
+  Dir["#{user_root}/Library/PreferencePanes/TVShows.prefPane/Contents/Resources/TVShowsHelper.app/Contents/Resources/*.png"].each do |img|
+    sudo %{convert -negate "#{img}" "#{img}"}
+  end
+  sudo %{killall TVShowsHelper && open #{user_root}/Library/PreferencePanes/TVShows.prefPane/Contents/Resources/TVShowsHelper.app}
 end
 
 # Window Magnet
