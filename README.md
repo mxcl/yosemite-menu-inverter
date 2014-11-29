@@ -25,6 +25,7 @@ Here’s a Twitter friendly URL:
 * Pomodoro Timer
 * Radium
 * TestFlight
+* TVShows App
 * Window Magnet
 
 ## FAQ

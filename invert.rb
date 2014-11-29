@@ -174,6 +174,14 @@ if File.directory? "/Applications/Tomighty.app"
   system %{killall Tomighty && open /Applications/Tomighty.app}
 end
 
+# TV Shows App
+if File.directory? "#{user_root}/Library/PreferencePanes/TVShows.prefPane/Contents/Resources/TVShowsHelper.app"
+  Dir["#{user_root}/Library/PreferencePanes/TVShows.prefPane/Contents/Resources/TVShowsHelper.app/Contents/Resources/*.png"].each do |img|
+    sudo %{convert -negate "#{img}" "#{img}"}
+  end
+  sudo %{killall TVShowsHelper && open #{user_root}/Library/PreferencePanes/TVShows.prefPane/Contents/Resources/TVShowsHelper.app}
+end
+
 # Window Magnet
 if File.directory? "/Applications/Window Magnet.app"
   base_path = "/Applications/Window\\ Magnet.app/Contents/Resources/"
