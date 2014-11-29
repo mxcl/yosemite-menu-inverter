@@ -23,7 +23,6 @@ Here’s a Twitter friendly URL:
 * [Google Drive](http://drive.google.com)
 * [Google Hangouts Extension](https://chrome.google.com/webstore/detail/hangouts/nckgahadagoaajjgafhacjanaoiihapd?hl=en)
 * [Hazel](http://www.noodlesoft.com/hazel.php)
-* [Pomodoro Timer](https://itunes.apple.com/us/app/pomodoro-timer-focus-on-your/id872515009?mt=12)
 * [Radium](http://catpigstudios.com/)
 * [TestFlight](https://www.testflightapp.com/)
 * [TVShows App](http://tvshowsapp.com/)

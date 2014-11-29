@@ -129,20 +129,6 @@ if File.directory? "#{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents
   system %{killall HazelHelper && open #{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app}
 end
 
-# Pomodoro Timer
-if File.directory? "/Applications/Pomodoro Timer.app"
-  %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|
-    prefix = "/Applications/Pomodoro Timer.app/Contents/Resources/"
-    img = "#{prefix}#{suffix}.png"
-    sudo %{convert -negate "#{img}" "#{img}"}
-
-    if not $?.success?
-      abort "    try: brew install imagemagick --with-libtiff"
-    end
-  end
-  relaunch "Pomodoro Timer"
-end
-
 # Radium
 if File.directory? "/Applications/Radium.app"
   base_path = "/Applications/Radium.app/Contents/Resources/"
