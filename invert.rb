@@ -121,6 +121,14 @@ if File.directory? base_hangouts_dir
   relaunch "Google\ Chrome"
 end
 
+# Hazel
+if File.directory? "#{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app"
+  Dir["#{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app/Contents/Resources/HazelStatusAlt.tiff"].each do |img|
+    sudo %{convert -negate "#{img}" "#{img}"}
+  end
+  system %{killall HazelHelper && open #{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app}
+end
+
 # Pomodoro Timer
 if File.directory? "/Applications/Pomodoro Timer.app"
   %w{ menu_bar_icon_break menu_bar_icon_break@2x menu_bar_icon_normal_black menu_bar_icon_normal_black@2x }.each do |suffix|

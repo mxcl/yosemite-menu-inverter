@@ -22,6 +22,7 @@ Here’s a Twitter friendly URL:
 * GrabBox
 * Google Drive
 * Google Hangouts Extension
+* Hazel
 * Pomodoro Timer
 * Radium
 * TestFlight
