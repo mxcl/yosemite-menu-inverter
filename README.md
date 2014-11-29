@@ -15,6 +15,7 @@ Here’s a Twitter friendly URL:
 ### Currently supports:
 
 * BitTorrent Sync
+* Caffeine
 * Crashlytics
 * CrashPlan
 * Degrees

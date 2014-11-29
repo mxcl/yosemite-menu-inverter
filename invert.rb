@@ -13,6 +13,9 @@ def relaunch(app)
   system %{killall "#{app}" && open "/Applications/#{app}.app"}
 end
 
+#For apps in system preferences panels
+user_root = File.expand_path('~')
+
 ##
 # Apps icon overwrite
 ##
@@ -32,6 +35,14 @@ if File.directory? "/Applications/BitTorrent Sync.app"
     system %{convert -negate "#{filename}" "#{filename}"}
   end
   relaunch "BitTorrent\\ Sync"
+end
+
+# Caffeine
+if File.directory? "/Applications/Caffeine.app"
+  Dir["/Applications/Caffeine.app/Contents/Resources/*.png"].each do |img|
+    sudo %{convert -negate "#{img}" "#{img}"}
+  end
+  relaunch "Caffeine"
 end
 
 # Crashlytics
