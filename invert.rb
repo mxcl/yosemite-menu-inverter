@@ -109,17 +109,18 @@ if File.directory? "/Applications/Google Drive.app"
 end
 
 # Google Hangouts
-base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
-if File.directory? base_hangouts_dir
-  current_hangouts_version = `ls #{base_hangouts_dir} | tail -1`.strip
+# NOTE disabled, see https://github.com/mxcl/yosemite-menu-inverter/issues/20
+# base_hangouts_dir = "#{`echo $HOME`.strip}/Library/Application\\ Support/Google/Chrome/Default/Extensions/nckgahadagoaajjgafhacjanaoiihapd/"
+# if File.directory? base_hangouts_dir
+#   current_hangouts_version = `ls #{base_hangouts_dir} | tail -1`.strip
 
-  prefix = "#{base_hangouts_dir}#{current_hangouts_version}/images_4/presence/"
-  `ls #{prefix} | grep "mac"`.split("\n").each do |filename|
-    img = "#{prefix}#{filename}"
-    system %{convert -negate #{img} #{img}}
-  end
-  relaunch "Google\ Chrome"
-end
+#   prefix = "#{base_hangouts_dir}#{current_hangouts_version}/images_4/presence/"
+#   `ls #{prefix} | grep "mac"`.split("\n").each do |filename|
+#     img = "#{prefix}#{filename}"
+#     system %{convert -negate #{img} #{img}}
+#   end
+#   relaunch "Google\ Chrome"
+# end
 
 # Hazel
 if File.directory? "#{user_root}/Library/PreferencePanes/Hazel.prefPane/Contents/Resources/HazelHelper.app"
