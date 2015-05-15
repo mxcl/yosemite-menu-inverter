@@ -25,6 +25,7 @@ Here’s a Twitter friendly URL:
 * [Hazel](http://www.noodlesoft.com/hazel.php)
 * [Radium](http://catpigstudios.com/)
 * [TestFlight](https://www.testflightapp.com/)
+* [Tomighty](http://www.tomighty.org/)
 * [TVShows App](http://tvshowsapp.com/)
 * [Window Magnet](http://magnet.crowdcafe.com/)
 
