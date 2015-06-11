@@ -189,3 +189,17 @@ if File.directory? "/Applications/Window Magnet.app"
   sudo "mv #{tmp} #{origin_light}"
   relaunch "Window\\ Magnet"
 end
+
+# Rescue Time 
+if File.directory? "/Applications/RescueTime.app"
+  Dir["/Applications/RescueTime.app/Contents/Resources/*.icns"].each do |img|
+    sudo %{iconutil --convert iconset "#{img}"}
+  end
+  Dir["/Applications/RescueTime.app/Contents/Resources/*.iconset/*.png"].each do |icon|
+      sudo %{convert -negate "#{icon}" "#{icon}"}
+  end
+  Dir["/Applications/RescueTime.app/Contents/Resources/*.iconset"].each do |img|
+    sudo %{iconutil --convert icns "#{img}"}
+  end
+  relaunch "RescueTime"
+end
