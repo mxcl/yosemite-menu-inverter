@@ -27,6 +27,7 @@ Here’s a Twitter friendly URL:
 * [TestFlight](https://www.testflightapp.com/)
 * [Tomighty](http://www.tomighty.org/)
 * [TVShows App](http://tvshowsapp.com/)
+* [Rescue Time](https://www.rescuetime.com)
 * [Window Magnet](http://magnet.crowdcafe.com/)
 
 ## FAQ
