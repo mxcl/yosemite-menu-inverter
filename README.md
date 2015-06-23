@@ -21,6 +21,7 @@ Here’s a Twitter friendly URL:
 * [Degrees](https://itunes.apple.com/us/app/degrees/id430173763?mt=12)
 * [GrabBox](http://grabbox.devsoft.no/)
 * [Google Drive](http://drive.google.com)
+* [Google Photos Backup](https://www.google.com/photos/about/)
 * ~~[Google Hangouts Extension](https://chrome.google.com/webstore/detail/hangouts/nckgahadagoaajjgafhacjanaoiihapd?hl=en)~~ (disabled as breaks Google’s CRM check since some point)
 * [Hazel](http://www.noodlesoft.com/hazel.php)
 * [Radium](http://catpigstudios.com/)

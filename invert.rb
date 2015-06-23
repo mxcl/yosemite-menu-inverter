@@ -196,10 +196,18 @@ if File.directory? "/Applications/RescueTime.app"
     sudo %{iconutil --convert iconset "#{img}"}
   end
   Dir["/Applications/RescueTime.app/Contents/Resources/*.iconset/*.png"].each do |icon|
-      sudo %{convert -negate "#{icon}" "#{icon}"}
+    sudo %{convert -negate "#{icon}" "#{icon}"}
   end
   Dir["/Applications/RescueTime.app/Contents/Resources/*.iconset"].each do |img|
     sudo %{iconutil --convert icns "#{img}"}
   end
   relaunch "RescueTime"
+end
+
+# Google Photos Backup 
+if File.directory? "/Applications/Google\ Photos\ Backup.app"
+  Dir["/Applications/Google\ Photos\ Backup.app/Contents/Resources/{U,u}ploader_*.png"].each do |img|
+    sudo %{convert -negate "#{img}" "#{img}"}
+  end
+  relaunch "Google Photos Backup"
 end
